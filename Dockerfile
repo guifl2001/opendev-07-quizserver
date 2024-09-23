@@ -1,13 +1,14 @@
-FROM python:3.11-slim
+FROM python:slim
 
 WORKDIR /app
 
-COPY . /app
+COPY requirements.txt requirements.txt
+RUN pip3 install -r requirements.txt
 
-RUN pip install --upgrade pip
-RUN pip install -r requirements.txt
-RUN python setup.py
-RUN python adduser.py
+
+COPY . .
+
+RUN python setup.py && python adduser.py
 
 EXPOSE 8080
 
