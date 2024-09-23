@@ -135,3 +135,75 @@ docker run -p 8080:8080 softdes-app
 5. **Access the application:**
 
 Open your web browser and go to http://localhost:8080 to access the application.
+
+## Running with Docker
+
+Using Docker can simplify the setup and deployment process by encapsulating the environment and dependencies. This guide assumes you have Docker installed on your system. If not, you can download and install Docker from [Docker's official site](https://www.docker.com/get-started).
+
+### Steps to Run the Application with Docker
+
+1. **Build the Docker Image**
+
+   Navigate to the directory containing the Dockerfile and execute the following command to build the Docker image. This command builds an image and tags it as `softdes-app`.
+
+    ```bash
+    docker build -t softdes-app .
+    ```
+
+2. **Run the Docker Container**
+
+   After the image has been successfully built, you can run the container using the following command. This will start the server inside the container, and it will be accessible through the specified port.
+
+    ```bash
+    docker run -d -p 8080:8080 softdes-app
+    ```
+
+   Here, `-d` runs the container in detached mode (in the background), and `-p 8080:8080` maps port 8080 of the container to port 8080 on your host, allowing you to access the application via `localhost:8080` in your web browser.
+
+3. **Viewing the Application**
+
+   Open your web browser and go to `http://localhost:8080`. You should now see the SoftDes 2018.2 application running.
+
+4. **Stopping the Container**
+
+   If you need to stop the running container, you can find the container ID using:
+
+    ```bash
+    docker ps
+    ```
+
+   Then stop the container by:
+
+    ```bash
+    docker stop [CONTAINER_ID]
+    ```
+
+Replace `[CONTAINER_ID]` with the actual ID of your container.
+
+### Additional Docker Commands
+
+- **View Docker Images**
+
+  To see all the Docker images on your system:
+
+    ```bash
+    docker images
+    ```
+
+- **View Running Containers**
+
+  To check all currently running Docker containers:
+
+    ```bash
+    docker ps
+    ```
+    
+- **Remove Docker Images**
+
+  To remove a Docker image:
+
+    ```bash
+    docker rmi [IMAGE_ID]
+    ```
+
+  Replace `[IMAGE_ID]` with the ID of the image you want to remove. Note that the image must not be used by any running container.
